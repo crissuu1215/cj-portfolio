@@ -11,11 +11,12 @@ import {
     GraduationCap,
     Mail,
     MapPin,
+    Medal,
     Network,
     Server,
     Sparkles,
 } from 'lucide-react';
-import { SiGithub } from '@icons-pack/react-simple-icons'
+import { SiGithub, SiModelcontextprotocol } from '@icons-pack/react-simple-icons'
 import { Header } from '@/components/header';
 import { Reveal } from '@/components/reveal';
 import { Starfield } from '@/components/starfield';
@@ -27,9 +28,18 @@ import {
     site,
     skillGroups,
 } from '@/lib/site-data';
+import { ReactElement, ReactNode } from 'react';
 
 const sectionIds = ['about', 'expertise', 'experience', 'projects', 'contact'];
 const expertiseIcons = [BrainCircuit, Code2, Server, Database];
+
+function RadarNode({ coordinates, children }: { coordinates: {x: number|string, y: number|string}, children: ReactNode},  ) {
+    return (
+        <div style={{ top: coordinates.y, left: coordinates.x }} className="visual-node">
+            {children}
+        </div>
+    )
+}
 
 function HeroVisual() {
     return (
@@ -43,18 +53,22 @@ function HeroVisual() {
                 <div className="visual-node node-center">
                     <BrainCircuit size={65} />
                 </div>
-                <div className="visual-node node-rag">
+                <RadarNode coordinates={{x: "4%", y:"38%"}}>
                     <Database size={18} />
                     <span>RAG</span>
-                </div>
-                <div className="visual-node node-tools">
-                    <Sparkles size={18} />
-                    <span>Tools</span>
-                </div>
-                <div className="visual-node node-api">
+                </RadarNode>
+                <RadarNode coordinates={{x: "32%", y:"79%"}}>
                     <Code2 size={18} />
                     <span>API</span>
-                </div>
+                </RadarNode>
+                <RadarNode coordinates={{x: "80%", y:"45%"}}>
+                    <Sparkles size={18} />
+                    <span>Tools</span>
+                </RadarNode>
+                <RadarNode coordinates={{x: "45%", y:"4%"}}>
+                    <SiModelcontextprotocol size={18} />
+                    <span>MCP</span>
+                </RadarNode>
                 <div className="coordinate coord-one">12.8797° N</div>
                 <div className="coordinate coord-two">SYSTEM / ONLINE</div>
             </div>
@@ -141,6 +155,17 @@ function About() {
                                 <span>01</span>
                                 <div>
                                     <strong>
+                                        Know the concept; Strategize
+                                    </strong>
+                                    <small>
+                                        Map the problem and its moving parts before writing the solution.
+                                    </small>
+                                </div>
+                            </li>
+                            <li>
+                                <span>02</span>
+                                <div>
+                                    <strong>
                                         Compose, don&apos;t duplicate
                                     </strong>
                                     <small>
@@ -150,7 +175,7 @@ function About() {
                                 </div>
                             </li>
                             <li>
-                                <span>02</span>
+                                <span>03</span>
                                 <div>
                                     <strong>Design for failure</strong>
                                     <small>
@@ -160,7 +185,7 @@ function About() {
                                 </div>
                             </li>
                             <li>
-                                <span>03</span>
+                                <span>04</span>
                                 <div>
                                     <strong>Keep AI grounded</strong>
                                     <small>
@@ -230,7 +255,7 @@ function Experience() {
                         className="timeline-item"
                     >
                         <div className="timeline-marker">
-                            <span>{String(index + 1).padStart(2, '0')}</span>
+                            <span>{String(experiences.length - index).padStart(2, '0')}</span>
                         </div>
                         <article>
                             <div className="experience-head">
@@ -379,7 +404,11 @@ function Education() {
                             Batangas State University — The National Engineering
                             University
                         </p>
-                        <strong>2019–2023 · Cum Laude</strong>
+                        <strong>2019–2023</strong>
+                        <br/>
+                        <div style={{ marginTop: "25px" }} className='tag-list'>
+                            <Tag><div className='with-icon'><Medal/> Cum Laude</div></Tag>
+                        </div>
                     </GlassCard>
                 </Reveal>
                 <Reveal delay={80}>
@@ -397,6 +426,9 @@ function Education() {
                             human-computer interaction.
                         </p>
                         <strong>Published on IEEE Xplore</strong>
+                        <br/>
+                        <br/>
+                        <ExternalLink className="" href="https://ieeexplore.ieee.org/document/10193672/">View Publication</ExternalLink>
                     </GlassCard>
                 </Reveal>
             </div>
@@ -407,6 +439,7 @@ function Education() {
 function Contact() {
     return (
         <section id="contact" className="section contact-section">
+            <Starfield/>
             <div className="container">
                 <Reveal>
                     <div className="contact-panel">
@@ -414,7 +447,7 @@ function Contact() {
                             <span>//</span> 06 / Contact
                         </p>
                         <h2>
-                            Interested on something?
+                            Interested on something? Wish to connect?
                             <br />
                             <span className="gradient-text">
                                 Send me a Mail!
