@@ -104,6 +104,7 @@ function Hero() {
             <a className="scroll-cue" href="#about">
                 <ArrowDown size={17} /> Scroll to explore
             </a>
+                <div className="starfield-bottom-glow" />
         </section>
     );
 }

@@ -83,7 +83,7 @@ button { color: inherit; font: inherit; }
 .hero-copy { position: relative; z-index: 1; }
 .starfield { --star-x: 0; --star-y: 0; position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .hero-starfield { z-index: -1; inset-inline: calc((100vw - 100%) / -2); mask-image: linear-gradient(to bottom, black 5%, black 78%, transparent 100%); }
-.starfield::before { content: ""; position: absolute; width: 35rem; height: 35rem; top: 12%; left: 53%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 9%, transparent), transparent 68%); filter: blur(10px); transform: translate(calc(var(--star-x) * -7px), calc(var(--star-y) * -7px)); transition: transform .25s ease-out; }
+.starfield-bottom-glow { position: absolute; width: 80vw; height: 80vw; bottom: 40%; left: 50%; transform: translateY(-50%); transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 9%, transparent), transparent 65%); filter: blur(10px); }
 .starfield-layer { position: absolute; inset: -3%; transition: transform .22s ease-out; will-change: transform; }
 .starfield-layer[data-depth="1"] { transform: translate(calc(var(--star-x) * -4px), calc(var(--star-y) * -4px)); }
 .starfield-layer[data-depth="2"] { transform: translate(calc(var(--star-x) * -9px), calc(var(--star-y) * -9px)); }
@@ -122,7 +122,8 @@ button { color: inherit; font: inherit; }
 .node-rag { top: 12%; right: 8%; }.node-tools { bottom: 16%; right: 2%; }.node-api { bottom: 11%; left: 2%; }
 .coordinate { position: absolute; color: var(--subtle); font-family: var(--font-accent); font-size: .58rem; letter-spacing: .08em; }.coord-one { top: 4%; left: 10%; }.coord-two { bottom: 3%; right: 16%; color: var(--cyan); }
 
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease var(--reveal-delay), transform .7s cubic-bezier(.2,.7,.2,1) var(--reveal-delay); }
+.reveal { opacity: 1; transform: none; }
+.reveal[data-reveal-ready="true"] { opacity: 0; transform: translateY(20px); transition: opacity .7s ease var(--reveal-delay), transform .7s cubic-bezier(.2,.7,.2,1) var(--reveal-delay); }
 .reveal[data-visible="true"] { opacity: 1; transform: none; }
 .glass-card { border: 1px solid var(--border); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(13px); transition: border-color .25s ease, transform .25s ease, background .25s ease; }
 .glass-card:hover { border-color: var(--border-bright); }

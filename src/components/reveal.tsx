@@ -15,6 +15,13 @@ export function Reveal({
     useEffect(() => {
         const element = ref.current;
         if (!element) return;
+
+        // Content is visible by default. Only prepare the hidden animation
+        // state after JavaScript and IntersectionObserver are available.
+        if (!('IntersectionObserver' in window)) return;
+
+        element.dataset.revealReady = 'true';
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -22,8 +29,12 @@ export function Reveal({
                     observer.disconnect();
                 }
             },
-            { threshold: 0.12 }
+            {
+                threshold: 0.4,
+                rootMargin: '0px 0px -40px 0px',
+            }
         );
+
         observer.observe(element);
         return () => observer.disconnect();
     }, []);

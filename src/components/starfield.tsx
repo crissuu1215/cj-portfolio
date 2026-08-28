@@ -17,8 +17,14 @@ type Star = {
 };
 
 function seededRandom(seed: number) {
-    const value = Math.sin(seed * 999.91) * 43758.5453;
-    return value - Math.floor(value);
+    // Avalanche nearby seeds into unrelated 32-bit values. These integer
+    // operations are consistent across Node/V8 and Safari/JavaScriptCore.
+    let value = seed | 0;
+    value = Math.imul(value ^ (value >>> 16), 0x21f0aaad);
+    value = Math.imul(value ^ (value >>> 15), 0x735a2d97);
+    value ^= value >>> 15;
+
+    return (value >>> 0) / 0x100000000;
 }
 
 function createStars(count: number, layer: number): Star[] {
