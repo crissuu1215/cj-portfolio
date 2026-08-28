@@ -8,7 +8,6 @@ import {
     Check,
     Code2,
     Database,
-    Github,
     GraduationCap,
     Mail,
     MapPin,
@@ -16,6 +15,7 @@ import {
     Server,
     Sparkles,
 } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons'
 import { Header } from '@/components/header';
 import { Reveal } from '@/components/reveal';
 import { Starfield } from '@/components/starfield';
@@ -65,7 +65,7 @@ function HeroVisual() {
 function Hero() {
     return (
         <section className="hero container" id="top">
-            <Starfield starCount={100} className="hero-starfield" />
+            <Starfield starCount={200} className="hero-starfield" />
             <div className="hero-copy">
                 <p className="availability">
                     <span /> Available
@@ -104,7 +104,7 @@ function Hero() {
             <a className="scroll-cue" href="#about">
                 <ArrowDown size={17} /> Scroll to explore
             </a>
-                <div className="starfield-bottom-glow" />
+                <div className="starfield-top-glow" />
         </section>
     );
 }
@@ -345,7 +345,7 @@ function Work() {
                                         key={link.href}
                                         href={link.href}
                                     >
-                                        <Github size={16} /> {link.label}
+                                        <SiGithub size={16} /> {link.label}
                                     </ExternalLink>
                                 ))}
                             </div>
@@ -414,10 +414,10 @@ function Contact() {
                             <span>//</span> 06 / Contact
                         </p>
                         <h2>
-                            Have a complex idea?
+                            Interested on something?
                             <br />
                             <span className="gradient-text">
-                                Let&apos;s make it useful.
+                                Send me a Mail!
                             </span>
                         </h2>
                         <p>
@@ -437,7 +437,7 @@ function Contact() {
                                 className="button secondary"
                                 href={site.github}
                             >
-                                View GitHub <Github size={17} />
+                                View GitHub <SiGithub size={17} />
                             </ExternalLink>
                         </div>
                         <span className="contact-email">{site.email}</span>
@@ -470,8 +470,8 @@ export function Portfolio() {
                             <i />
                         </a>
                         <div>
-                            <p>Designed &amp; built by Criss Jericho Geli.</p>
-                            <p>I use vim btw</p>
+                            <p>Designed &amp; Conceptualized by Criss Jericho Geli - Coauthored with <span className="text-highlight">AI :)</span></p>
+                            <p>I use <span className="text-highlight">vim</span> btw</p>
                         </div>
                     </div>
                     <span>© {new Date().getFullYear()}</span>
