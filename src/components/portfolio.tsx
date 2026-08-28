@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Reveal } from '@/components/reveal';
+import { Starfield } from '@/components/starfield';
 import { ExternalLink, GlassCard, SectionHeading, Tag } from '@/components/ui';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import {
@@ -64,9 +65,10 @@ function HeroVisual() {
 function Hero() {
     return (
         <section className="hero container" id="top">
+            <Starfield starCount={100} className="hero-starfield" />
             <div className="hero-copy">
                 <p className="availability">
-                    <span /> Available for meaningful engineering work
+                    <span /> Available
                 </p>
                 <h1>
                     Hi! I am{' '}
@@ -79,7 +81,7 @@ function Hero() {
                     agentic RAG workflows to polished web experiences.
                 </p>
                 <div className="hero-actions">
-                    <a className="button primary" href="#work">
+                    <a className="button primary" href="#projects">
                         Explore my work <ArrowRight size={17} />
                     </a>
                     <a
